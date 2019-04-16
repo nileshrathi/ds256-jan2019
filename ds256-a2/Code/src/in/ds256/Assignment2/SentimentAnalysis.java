@@ -16,6 +16,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.function.Function2;
+import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
@@ -159,11 +160,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Self-assurance",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Self-assurance",count1));
 		    }
 		    if(count2>0l)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Self-assurance",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Self-assurance",count2));
 		    }
 		    //Attentiveness		
 		    String[] Attentiveness= new String[]{"alert", "attentiveness", "concentrating", "determined"};
@@ -184,11 +185,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Attentiveness",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Attentiveness",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Attentiveness",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Attentiveness",count2));
 		    }
 		    //Joviality
 		    String[] Joviality= new String[]{"happy", "joyful", "delighted", "cheerful", "excited", "enthusiastic", "lively", "energetic"};
@@ -209,11 +210,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Joviality",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Joviality",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Joviality",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Joviality",count2));
 		    }
 		    
 		    
@@ -239,11 +240,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Negative Affect",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Negative Affect",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Negative Affect",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Negative Affect",count2));
 		    }
 		    
 		    String[] Positive_Affet= new String[]{"active"," alert", "attentive", "determined", "enthusiastic", "excited", "inspired", "interested", "pround", "strong"};
@@ -264,11 +265,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Positive Affet ",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Positive Affet ",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Positive Affet",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Positive Affet",count2));
 		    }
 		    
 		    
@@ -294,11 +295,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Fear",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Fear",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Fear",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Fear",count2));
 		    }
 		    
 		    String[] Hostility= new String[]{"angry","hostile","irritable","scornful","disgusted","loathing"};
@@ -369,11 +370,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Sadness",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Sadness",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Sadness",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Sadness",count2));
 		    }
 		    
 		    
@@ -395,11 +396,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Shyness",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Shyness",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Shyness",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Shyness",count2));
 		    }
 		    
 		    String[] Fatigue= new String[]{"sleepy","tired","sluggish","drowsy"};
@@ -420,11 +421,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Fatigue",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Fatigue",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Fatigue",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Fatigue",count2));
 		    }
 		    
 		    String[] Serenity= new String[]{"calm","relaxed","at ease"};
@@ -445,11 +446,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Serenity",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Serenity",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Serenity",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Serenity",count2));
 		    }
 		    
 		    
@@ -471,11 +472,11 @@ public class SentimentAnalysis {
 		    }
 		    if(count1>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Surprise",count1));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Surprise",count1));
 		    }
 		    if(count2>0L)
 		    {
-		    	sentiment_count_list.add(new Tuple2<>(time+"Surprise",count2));
+		    	sentiment_count_list.add(new Tuple2<>(time+"---Surprise",count2));
 		    }
 		    
 		    
@@ -496,17 +497,16 @@ public class SentimentAnalysis {
 		 JavaPairDStream<Long,String> sortedStream = swappedPair.transformToPair(s -> s.sortByKey(false));
 		 JavaPairDStream<String, Long> original_sentiment_to_count_format= sortedStream.mapToPair(Tuple2::swap);
 		 
-//		 JavaPairDStream<String, String> timeToUser=original_sentiment_to_count_format.mapToPair(new PairFunction<Tuple2<String, String>, String,String>() {
-//			   @Override
-//				public Tuple2<String, String> call(Tuple2<String, String> t) throws Exception {
-//					// TODO Auto-generated method stub
-//				   
-//				   
-//					return Tuple2<String,String>("dsa","dsa");
-//				}
-//			});
-		 original_sentiment_to_count_format.print();
-		 original_sentiment_to_count_format.dstream().saveAsTextFiles(output,"");
+		 @SuppressWarnings("serial")
+		JavaPairDStream<String, String> timeToIndividualSentiment=original_sentiment_to_count_format.mapToPair(x -> {
+			
+			String[] s=x._1.split("---");
+			return new Tuple2<String,String> (s[0],s[1]);
+		});
+		 JavaPairDStream<String, Iterable<String>> timetoSentimentGroup = timeToIndividualSentiment.groupByKey();
+		
+		 timetoSentimentGroup.print();
+		 timetoSentimentGroup.dstream().saveAsTextFiles(output,"");
 
 		// Start the computation
 		jssc.start();
