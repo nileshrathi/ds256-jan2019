@@ -32,8 +32,6 @@ import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.streaming.api.java.*;
 import org.apache.spark.streaming.Durations;
 
-
-
 public class UserCount {
 
 	public static void main(String[] args) throws Exception {
@@ -102,12 +100,18 @@ JavaDStream<String> input_lines = messages.map(ConsumerRecord::value).map(json -
 								    Integer year= cal.get(Calendar.YEAR);
 								    Integer month= cal.get(Calendar.MONTH);
 								    Integer day= cal.get(Calendar.DATE);
+								    Integer week= cal.get(Calendar.WEEK_OF_MONTH);
 								    
-								    String time= year.toString() + "-" + month.toString() + "-" + day.toString() + "-" + hours.toString();
-				
+								    
+								    String time_hourly= year.toString() + "-" + month.toString() + "-" +week.toString()+"-"+day.toString() + "-" + hours.toString();
+								    String time_daily= year.toString() + "-" + month.toString() + "-" +week.toString()+"-"+day.toString();
+								    String time_weekly= year.toString() + "-" + month.toString() + "-" +week.toString();
+								    
 				
 
-				return time+"----"+user_id;
+				return time_hourly+"----"+user_id;
+				//return time_daily+"----"+user_id;
+				//return time_weekly+"----"+user_id;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				return "cache block";
